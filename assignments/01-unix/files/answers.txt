@@ -1,0 +1,201 @@
+# Make a directory (in this directory) called "files"
+mkdir files
+
+# create a file called "answers.txt"
+touch answers.txt
+
+# Download the following using their existing filenames
+wget https://www.constitution.org/usdeclar.txt usdeclar.txt
+
+```
+--2019-01-21 20:55:03--  https://www.constitution.org/usdeclar.txt
+Resolving www.constitution.org (www.constitution.org)... 54.153.63.33, 52.52.2.146, 52.8.181.78, ...
+Connecting to www.constitution.org (www.constitution.org)|54.153.63.33|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/plain]
+Saving to: ‘usdeclar.txt’
+
+usdeclar.txt             [ <=>                ]   8.48K  --.-KB/s    in 0s
+
+2019-01-21 20:55:04 (18.1 MB/s) - ‘usdeclar.txt’ saved [8685]
+
+--2019-01-21 20:55:04--  http://usdeclar.txt/
+Resolving usdeclar.txt (usdeclar.txt)... 92.242.140.2
+Connecting to usdeclar.txt (usdeclar.txt)|92.242.140.2|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html’
+
+index.html               [ <=>                ]     852  --.-KB/s    in 0s
+
+2019-01-21 20:55:05 (23.2 MB/s) - ‘index.html’ saved [852]
+
+FINISHED --2019-01-21 20:55:05--
+Total wall clock time: 1.6s
+Downloaded: 2 files, 9.3K in 0s (18.5 MB/s)
+```
+
+wget https://www.usconstitution.net/const.txt const.txt
+
+```
+--2019-01-21 20:57:19--  https://www.usconstitution.net/const.txt
+Resolving www.usconstitution.net (www.usconstitution.net)... 52.52.40.206
+Connecting to www.usconstitution.net (www.usconstitution.net)|52.52.40.206|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/plain]
+Saving to: ‘const.txt’
+
+const.txt                [ <=>                ]  44.06K  --.-KB/s    in 0.07s
+
+2019-01-21 20:57:19 (676 KB/s) - ‘const.txt’ saved [45119]
+
+--2019-01-21 20:57:19--  http://const.txt/
+Resolving const.txt (const.txt)... 92.242.140.2
+Connecting to const.txt (const.txt)|92.242.140.2|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html.1’
+
+index.html.1             [ <=>                ]     846  --.-KB/s    in 0s
+
+2019-01-21 20:57:19 (26.9 MB/s) - ‘index.html.1’ saved [846]
+
+FINISHED --2019-01-21 20:57:19--
+Total wall clock time: 0.7s
+Downloaded: 2 files, 45K in 0.07s (688 KB/s)
+```
+
+wget https://www.gutenberg.org/files/25344/25344-0.txt -O scarlet.txt
+
+```
+--2019-01-21 21:22:48--  https://www.gutenberg.org/files/25344/25344-0.txt
+Resolving www.gutenberg.org (www.gutenberg.org)... 152.19.134.47
+Connecting to www.gutenberg.org (www.gutenberg.org)|152.19.134.47|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 525464 (513K) [text/plain]
+Saving to: ‘scarlet.txt’
+
+scarlet.txt          100%[===================>] 513.15K   494KB/s    in 1.0s
+
+2019-01-21 21:22:50 (494 KB/s) - ‘scarlet.txt’ saved [525464/525464]
+```
+
+# Show a long listing of the files
+ls -l
+
+```
+total 1280
+-rw-r--r--  1 kai  staff   4.2K Jan 21 21:18 answers.txt
+-rw-r--r--@ 1 kai  staff    44K Jan 18 11:58 const.txt
+-rw-r--r--@ 1 kai  staff   852B Jan 21 20:55 index.html
+-rw-r--r--@ 1 kai  staff   846B Jan 21 20:57 index.html.1
+-rw-r--r--@ 1 kai  staff   513K Jan 23  2015 scarlet.txt
+-rw-r--r--@ 1 kai  staff   8.5K Jan 18 11:58 usdeclar.txt
+```
+
+# Show a command to count the number of lines in each file and a total count of all lines
+wc -l *
+
+```
+127 answers.txt
+872 const.txt
+  0 index.html
+  0 index.html.1
+9120 scarlet.txt
+176 usdeclar.txt
+10295 total
+```
+
+# Show a command that will find the files in this directory which are larger than 50k
+find . -size +50k
+
+```
+./scarlet.txt
+```
+
+# Show a command that will tell you what kind of file that Unix considers "const.txt"
+find . -name const.txt -type f
+
+```
+./const.txt
+```
+
+# Show a single command that will print the MD5 sum of all the text files (without mentioning each file individually)
+# first need to run: brew install md5sha1sum
+md5sum *
+
+```
+59d2396d4a740dea980bf8db0c2e1846  answers.txt
+f66a8165c621d48bac2216b2f31e8742  const.txt
+7c26aff7653c5c23ed291d8a36d4899d  index.html
+a22c1888f883c73e44e965b7b2287ba7  index.html.1
+4958553be1483e4cbd615ce5fa73f6ab  scarlet.txt
+7f54939b30ae7b6d45d473a4c82a41b0  usdeclar.txt
+```
+
+# Show the output of a command that will tell you how much disk space in kilobytes (K) is being used
+df -h -k
+
+```
+Filesystem    1024-blocks     Used Available Capacity iused               ifree %iused  Mounted on
+/dev/disk1s1    244912536 84647948 157503472    35% 1123008 9223372036853652799    0%   /
+devfs                 187      187         0   100%     649                   0  100%   /dev
+/dev/disk1s4    244912536  2097172 157503472     2%       2 9223372036854775805    0%   /private/var/vm
+map -hosts              0        0         0   100%       0                   0  100%   /net
+map auto_home           0        0         0   100%       0                   0  100%   /home
+```
+
+# Show a command to count how many lines of text contain the word "judge" (irrespective of case) in all the files
+
+grep -ci 'judge' *
+
+```
+answers.txt:0
+const.txt:5
+index.html:0
+index.html.1:0
+scarlet.txt:15
+usdeclar.txt:2
+```
+
+# Show a command that will display only the names of the files that contain the word "human"
+grep -il 'human' *
+
+```
+answers.txt
+scarlet.txt
+usdeclar.txt
+```
+
+# Show a single command that will count the number of times the word "scarlet" appears
+# in "scarlet.txt" (case-insensitive); that is, not the number of lines that contain "scarlet"
+# but each occurrence of the word
+
+grep -oi 'scarlet' scarlet.txt | wc -l
+
+```
+125
+```
+
+# Show a single command that will take the first 15 lines from each file and append them into a
+# new file called "foo"
+
+head -n 15 * >> foo
+
+# Show a command that shows how many lines are in "foo"
+
+wc -l foo
+
+```
+71 foo
+```
+
+# You might have expected that the total number of lines in the previous question would be
+# 45 (15 * 3), but it should not be. Why is it more or less?
+
+Answer: it was more as there were the index files created from the wget commands,
+along with ths file answers.txt. I would have expected 6*15 = 90 but I guess some of the
+files were less than 15 lines.
+
+# Remove the file called "foo"
+rm foo
