@@ -1,0 +1,54 @@
+# Show a single command that will calculate the number of words in the files whose
+# names start with either "c" or "s"; the command must use a pattern and not list
+# the files individually
+
+grep -E '\b[cs]' * | wc -w
+
+```
+70814
+```
+
+# Show a command that will show the lines that begin with "Article" followed by
+# a space and a number
+
+
+grep -E '^Article\s\d' *
+
+```
+const.txt:Article 1.
+const.txt:Article 2.
+const.txt:Article 3.
+const.txt:Article 4.
+const.txt:Article 5.
+const.txt:Article 6.
+const.txt:Article 7.
+```
+
+# Show a command that will count the number of empty lines in "const.txt"
+
+grep -c '^$' const.txt
+
+```
+169
+```
+
+# Show a command that will find all the lines in "scarlet.txt" that begin with a
+# vowel (case-insensitive) and shows you a count by letter like the output in Table 1
+
+grep -E -o '^[AEIOUaeiou]' scarlet.txt | sort | uniq -c
+
+```
+59 A
+10 E
+91 I
+20 O
+ 6 U
+651 a
+199 e
+356 i
+358 o
+106 u
+```
+
+Notes: the -o --only-matching Prints only the matching part of the lines.
+# looks like we don't actually need the -E for this to work.

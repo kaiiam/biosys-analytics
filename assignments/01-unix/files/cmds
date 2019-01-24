@@ -27,192 +27,314 @@
    27  ls
    28  cd week1/
    29  mv ~/Downloads/Falagan\ et\ al\ 2014_FEMS\ Microbiol.pdf .
-   30  cd ../..
-   31  ls
-   32  cd be_534/
-   33  ls
-   34  clear
-   35  ls
-   36  mv ~/Downloads/Syllabus_BE434_534_Spring2019.pdf .
-   37  cd ~/.ssh/
+   30  ssh kblumberg@hpc.arizona.edu
+   31  ssh kblumberg@hpc.arizona.edu
+   32  ssh kblumberg@hpc.arizona.edu
+   33  ssh kblumberg@hpc.arizona.edu
+   34  ssh hpc
+   35  cd ../..
+   36  ls
+   37  cd be_534/
    38  ls
-   39  ls -h
-   40  ls -a
-   41  ssh-keygen
-   42  ls -a
-   43  cat ~/.ssh/id_rsa.pub
-   44  pbcopy < ~/.ssh/id_rsa.pub
-   45  pbcopy < ~/.ssh/id_rsa.pub
-   46  vi config 
-   47  cd -
-   48  ls
-   49  mv ~/Downloads/beginning-python.pdf 
-   50  mv ~/Downloads/beginning-python.pdf .
-   51  ls
-   52  ls
-   53  mkdir week2
-   54  cd week2/
-   55  mv ~/Downloads/01-intro.pdf .
+   39  clear
+   40  ls
+   41  mv ~/Downloads/Syllabus_BE434_534_Spring2019.pdf .
+   42  cd ~/.ssh/
+   43  ls
+   44  ls -h
+   45  ls -a
+   46  ssh-keygen
+   47  ls -a
+   48  cat ~/.ssh/id_rsa.pub
+   49  pbcopy < ~/.ssh/id_rsa.pub
+   50  pbcopy < ~/.ssh/id_rsa.pub
+   51  vi config 
+   52  cd -
+   53  ls
+   54  mv ~/Downloads/beginning-python.pdf 
+   55  mv ~/Downloads/beginning-python.pdf .
    56  ls
-   57  open 01-intro.pdf 
-   58  ls
-   59  ls
-   60  cd ..
+   57  ls
+   58  mkdir week2
+   59  cd week2/
+   60  mv ~/Downloads/01-intro.pdf .
    61  ls
-   62  git clone https://github.com/kaiiam/biosys-analytics.git
-   63  cd 
-   64  cd .ssh/
-   65  ls
-   66  cat id_rsa.pub 
-   67  cd -
-   68  ls
-   69  cd -
-   70  cd -
-   71  cd ~/Desktop/phd/courses/spring_2019/be_534/
-   72  ls
-   73  cd biosys-analytics/
-   74  ls
-   75  ls
-   76  git remote add upstream https://github.com/hurwitzlab/biosys-analytics.git
-   77  git pull upstream master
-   78  cd ..
+   62  open 01-intro.pdf 
+   63  ls
+   64  ls
+   65  cd ..
+   66  ls
+   67  git clone https://github.com/kaiiam/biosys-analytics.git
+   68  cd 
+   69  cd .ssh/
+   70  ls
+   71  cat id_rsa.pub 
+   72  cd -
+   73  ls
+   74  cd -
+   75  cd -
+   76  cd ~/Desktop/phd/courses/spring_2019/be_534/
+   77  ls
+   78  cd biosys-analytics/
    79  ls
-   80  open Syllabus_BE434_534_Spring2019.pdf 
-   81  git status 
-   82  git add .
-   83  ls
-   84  cd biosys-analytics/
-   85  git add .
+   80  ls
+   81  git remote add upstream https://github.com/hurwitzlab/biosys-analytics.git
+   82  git pull upstream master
+   83  cd ..
+   84  ls
+   85  open Syllabus_BE434_534_Spring2019.pdf 
    86  git status 
-   87  git push
-   88  echo hello > hello.txt
-   89  ls
-   90  git add hello.txt
-   91  git commit -m 'added hello.txt' hello.txt
-   92  git status 
-   93  git status 
-   94  git push 
-   95  ls
-   96  cd assignments/
-   97  ls
-   98  cd ..
-   99  ls
-  100  ls bin/
-  101  ls
-  102  ls data/
-  103  clear
+   87  git add .
+   88  ls
+   89  cd biosys-analytics/
+   90  git add .
+   91  git status 
+   92  git push
+   93  echo hello > hello.txt
+   94  ls
+   95  git add hello.txt
+   96  git commit -m 'added hello.txt' hello.txt
+   97  git status 
+   98  git status 
+   99  git push 
+  100  ls
+  101  cd assignments/
+  102  ls
+  103  cd ..
   104  ls
-  105  ls examples/
-  106  ls lectures/
-  107  cdls
-  108  ls
-  109  clear
-  110  cd lectures/
-  111  ls
-  112  cd 01-intro/
+  105  ls bin/
+  106  ls
+  107  ls data/
+  108  clear
+  109  ls
+  110  ls examples/
+  111  ls lectures/
+  112  cdls
   113  ls
-  114  open intro.md 
-  115  atom Makefile 
+  114  clear
+  115  cd lectures/
   116  ls
-  117  cd ..
+  117  cd 01-intro/
   118  ls
-  119  cd ..
-  120  ls
-  121  cd assignments/
-  122  ls
-  123  cd 01-unix/
-  124  ls
-  125  mkdir files
-  126  open ../../lectures/02-unix/02-unix.pdf 
+  119  open intro.md 
+  120  atom Makefile 
+  121  ls
+  122  cd ..
+  123  ls
+  124  cd ..
+  125  ls
+  126  cd assignments/
   127  ls
-  128  cd files/
-  129  touch answers.txt
-  130  atom answers.txt 
-  131  wget https://www.constitution.org/usdeclar.txt usdeclar.txt
+  128  cd 01-unix/
+  129  ls
+  130  mkdir files
+  131  open ../../lectures/02-unix/02-unix.pdf 
   132  ls
-  133  less index.html 
-  134  wget https://www.usconstitution.net/const.txt const.txt
-  135  ls
-  136  less const.txt 
-  137  less usdeclar.txt 
-  138  wget https://www.gutenberg.org/files/25344/25344-0.txt scarlet.txt
-  139  mkdir file
+  133  cd files/
+  134  touch answers.txt
+  135  atom answers.txt 
+  136  wget https://www.constitution.org/usdeclar.txt usdeclar.txt
+  137  ls
+  138  less index.html 
+  139  wget https://www.usconstitution.net/const.txt const.txt
   140  ls
-  141  rm file/
-  142  rmdir file/
-  143  ls -l
-  144  wc
-  145  man wc
-  146  wc *
-  147  wc -l *
-  148  find -size 50k
-  149  clear
-  150  find . -size 50k
-  151  ls
-  152  ls -s
-  153  ls -thor
-  154  find . -size +50k
-  155  ls
-  156  ls -l
-  157  find . -size +50k
-  158  ls
-  159  rm index.html.2 
-  160  rm 25344-0.txt 
-  161  wget https://www.gutenberg.org/files/25344/25344-0.txt -O scarlet.txt
-  162  clear
-  163  ls -l
-  164  wc -l *
-  165  find . -size +50k
-  166  type const.txt
-  167  ls
-  168  find const.txt -type 
-  169  find . -name const.txt -type c
-  170  find . -name const.txt -type
-  171  ls
-  172  find . -name const.txt -type f
-  173  find . -name const.txt -type D
-  174  find . -name const.txt -type d
-  175  find . -name const.txt -type f
-  176  md5sum *
-  177  ls
-  178  md5sum *.*
-  179  brew install md5sum
-  180  md5sum answers.txt 
-  181* brew install md5sha1sum
-  182  md5sum *
-  183  df -k
-  184  df -h
-  185  df -hK
-  186  df -h -k
-  187  grep -il "judge" .
-  188  ls
-  189  grep -nwil . -e 'judge'
-  190  grep -c 'judge' *
-  191  grep -ci 'judge' *
-  192  atom scarlet.txt 
-  193  grep -cil 'human' *
-  194  grep -cil 'human' .
-  195  grep -cil 'human' .
-  196  grep -il 'human' *
-  197  grep -oi 'scarlet' scarlet.txt
-  198  clear
-  199  grep -oi 'scarlet' scarlet.txt | wc -l
-  200  clear
-  201  ls
-  202  head *
+  141  less const.txt 
+  142  less usdeclar.txt 
+  143  wget https://www.gutenberg.org/files/25344/25344-0.txt scarlet.txt
+  144  mkdir file
+  145  ls
+  146  rm file/
+  147  rmdir file/
+  148  ls -l
+  149  wc
+  150  man wc
+  151  wc *
+  152  wc -l *
+  153  find -size 50k
+  154  clear
+  155  find . -size 50k
+  156  ls
+  157  ls -s
+  158  ls -thor
+  159  find . -size +50k
+  160  ls
+  161  ls -l
+  162  find . -size +50k
+  163  ls
+  164  rm index.html.2 
+  165  rm 25344-0.txt 
+  166  wget https://www.gutenberg.org/files/25344/25344-0.txt -O scarlet.txt
+  167  clear
+  168  ls -l
+  169  wc -l *
+  170  find . -size +50k
+  171  type const.txt
+  172  ls
+  173  find const.txt -type 
+  174  find . -name const.txt -type c
+  175  find . -name const.txt -type
+  176  ls
+  177  find . -name const.txt -type f
+  178  find . -name const.txt -type D
+  179  find . -name const.txt -type d
+  180  find . -name const.txt -type f
+  181  md5sum *
+  182  ls
+  183  md5sum *.*
+  184  brew install md5sum
+  185  md5sum answers.txt 
+  186  brew install md5sha1sum
+  187  md5sum *
+  188  df -k
+  189  df -h
+  190  df -hK
+  191  df -h -k
+  192  grep -il "judge" .
+  193  ls
+  194  grep -nwil . -e 'judge'
+  195  grep -c 'judge' *
+  196  grep -ci 'judge' *
+  197  atom scarlet.txt 
+  198  grep -cil 'human' *
+  199  grep -cil 'human' .
+  200  grep -cil 'human' .
+  201  grep -il 'human' *
+  202  grep -oi 'scarlet' scarlet.txt
   203  clear
-  204  ls
-  205  head -n 15 const.txt 
-  206  clear
-  207  ls
-  208  head -n 15 * >> foo
+  204  grep -oi 'scarlet' scarlet.txt | wc -l
+  205  clear
+  206  ls
+  207  head *
+  208  clear
   209  ls
-  210  more foo 
+  210  head -n 15 const.txt 
   211  clear
-  212  rm foo 
+  212  ls
   213  head -n 15 * >> foo
-  214  wc -l foo 
-  215  atom foo 
-  216  ls
+  214  ls
+  215  more foo 
+  216  clear
   217  rm foo 
-  218  history > cmds
+  218  head -n 15 * >> foo
+  219  wc -l foo 
+  220  atom foo 
+  221  ls
+  222  rm foo 
+  223  history > cmds
+  224  ls
+  225  atom cmds 
+  226  ls
+  227  cd ..
+  228  cd ..
+  229  ls
+  230  cd ..
+  231  ls
+  232  git status 
+  233  git add -A
+  234  git status 
+  235  git commit -m 'completed 01-unix asg'
+  236  git push 
+  237  htop
+  238  top
+  239  man wc
+  240  man find
+  241  man find
+  242  man wget
+  243  man type
+  244  man find
+  245  man grep
+  246  man head
+  247  cd Desktop/phd/courses/spring_2019/rnr_696a/
+  248  ls
+  249  cd week1/
+  250  ls
+  251  open Falagan\ et\ al\ 2014_FEMS\ Microbiol.pdf 
+  252  cd Desktop/phd/courses/spring_2019/be_534/biosys-analytics/
+  253  ls
+  254  cd ..
+  255  ls
+  256  cd week2/
+  257  ls
+  258  cd ..
+  259  cd biosys-analytics/lectures/01-intro/
+  260  ls
+  261  open 01-intro.pdf 
+  262  cd ../02-unix/
+  263  ls
+  264  open 02-unix.pdf 
+  265  cd ../03-unix-exercises/
+  266  open 03-unix-exercises.pdf 
+  267  cd ..
+  268  ls
+  269  cd ..
+  270  ls
+  271  clear
+  272  ls
+  273  git pull upstream master
+  274  git status 
+  275  git push 
+  276  git status 
+  277  cd assignments/01-unix-grad/
+  278  ls
+  279  atom README.md 
+  280  ls
+  281  touch answers.txt
+  282  atom answers.txt 
+  283  cd ../01-unix/files/
+  284  ls
+  285  grep 'c' . | wc -l
+  286  grep 'c' . 
+  287  grep -c 'c'
+  288  grep -c 'c' | wc -l
+  289  grep 'judge' *
+  290  grep 'c' *
+  291  grep 'c' * | wc -l
+  292  grep -e '^c' * | wc -l
+  293  grep -e '^c' * | head
+  294  grep -o -E '\w+' *
+  295  grep -o -E '^c' *
+  296  grep "^c" answers.txt 
+  297  grep "^c" scarlet.txt 
+  298  grep -o -E '\w+' * | grep -E '^c'
+  299  grep -o -E '\w+' * | grep -E '^c' *
+  300   grep -E '^c.*' *
+  301   grep -o -E '^c.*' *
+  302  grep -o -E '^c' *
+  303  grep -o -E '\w+' *
+  304  grep -o -E '^c' *
+  305  grep -o -E '\w+' * | grep -E '^c' *
+  306  grep -o -E '^c' *
+  307  grep -o -E '^c' *
+  308  grep -o -E '\w+' * | grep -E '^c' *
+  309  grep -c '^r' scarlet.txt 
+  310  grep -E '\bs' scarlet.txt 
+  311  grep -E '\bs' scarlet.txt | wc -w
+  312  grep -E '\bs' * | wc -w
+  313  ls -h
+  314  ls -l
+  315  grep -E '\b[cs]' * | wc -w
+  316  clear
+  317  grep -E '^Article' *
+  318  grep -E '^Article\s\d' *
+  319  grep -c '^$' const.txt 
+  320  grep -c '[aeiou]' scarlet.txt 
+  321  grep -E '[aeiou]' scarlet.txt 
+  322  grep -E '^[aeiou]' scarlet.txt 
+  323  grep -E '^[AEIOUaeiou]' scarlet.txt 
+  324  grep -E '^[AEIOUaeiou]' scarlet.txt | sort
+  325  grep -E '^[AEIOUaeiou]' scarlet.txt | sort | wc -l
+  326  grep -E '^[AEIOUaeiou]' scarlet.txt | sort | uniq -c
+  327  grep -E '^[AEIOUaeiou]' scarlet.txt | sort | grep -E '^.' | uniq -c
+  328  grep -E '^[AEIOUaeiou]' scarlet.txt | sort | grep -E '^.'
+  329  grep -E '^[AEIOUaeiou]' scarlet.txt | awk $1
+  330  grep -E '^[AEIOUaeiou]' scarlet.txt | sort | uniq -c
+  331  grep -E '^[AEIOUaeiou]' scarlet.txt | sort 
+  332  grep -E '^[AEIOUaeiou]' scarlet.txt | uniq -c
+  333  grep -E -o '^[AEIOUaeiou]' scarlet.txt 
+  334  grep -E -o '^[AEIOUaeiou]' scarlet.txt | sort
+  335  grep -E -o '^[AEIOUaeiou]' scarlet.txt | sort | uniq -c
+  336  grep -o '^[AEIOUaeiou]' scarlet.txt | sort | uniq -c
+  337  clear
+  338  ls
+  339  mv cmds old_cmds
+  340  history > cmds
