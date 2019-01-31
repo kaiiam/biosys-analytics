@@ -1,37 +1,28 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -u
+ARG=$1
 
-ARG1=""
+# get the directory of the gapminder data
+DIR="$PWD/../../data/gapminder/"
 
-function USAGE() {
-    printf "Usage:\n  %s -a ARG\n\n" "$(basename "$0")"
+#create a temporary file to store the list of files
+touch file
 
-    echo "Required arguments:"
-    echo " -a ARG"
-    echo
-    exit "${1:-0}"
-}
+# populate the temp file with the list of files
+ls $DIR | sort > file
 
-[[ $# -eq 0 ]] && USAGE 1
-
-while getopts :a:h OPT; do
-    case $OPT in
-        a)
-            ARG="$OPTARG"
-            ;;
-        h)
-            USAGE
-            ;;
-        :)
-            echo "Error: Option -$OPTARG requires an argument."
-            exit 1
-            ;;
-        \?)
-            echo "Error: Invalid option: -${OPTARG:-""}"
-            exit 1
-    esac
-done
-
-echo "ARG \"$ARG\""
-
+i=1
+if [[ $# -eq 0 ]]; then
+  while read LINE; do
+    echo "$i $(basename $LINE .cc.txt)"
+    i=$(($i+1))
+  done <file
+else
+  while read LINE; do
+    if ${LINE:0:1} == "U"; then
+      #echo "${LINE:0:1}" #"$i $(basename $LINE .cc.txt)"
+      echo "$i $(basename $LINE .cc.txt)"
+      i=$(($i+1))
+    fi
+  done <file
+fi
