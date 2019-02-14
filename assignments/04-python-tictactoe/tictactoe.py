@@ -83,12 +83,15 @@ def main():
         print('Invalid cell "{}", must be 1-9'.format(cell_arg))
         sys.exit(1)
 
-    #Then handle the instance where you got one of --player or --cell but not both
-    # if cell_arg or player_arg is None:
-    #     print('{} --player X'.format(ttt))
-    #     sys.exit(1)
-    # if (cell_arg and not player_arg) or (not cell_arg and player_arg) is None:
-    #     print('someshit')
+    #Handle the instance where you got one of --player or --cell but not both
+    if cell_arg is None and player_arg in ['X','O']:
+        print('Must provide both --player and --cell')
+        sys.exit(1)
+
+    if player_arg is None and cell_arg is not None:
+        print('Must provide both --player and --cell')
+        sys.exit(1)
+
 
     #split the state string into a list so it can be altered
     state_list = list(state_arg)
