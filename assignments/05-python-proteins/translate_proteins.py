@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Author : chunanliu
+Author : Kai Blumberg
 Date   : 2019-02-12
 Purpose: Rock the Casbah
 """
@@ -111,3 +111,4 @@ def main():
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
+
