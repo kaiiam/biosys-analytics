@@ -18,7 +18,7 @@ def get_args():
         description='Check a delimited text file',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('file', metavar='str', help='File')
+    parser.add_argument('file', metavar='FILE', help='Input file')
 
     parser.add_argument(
         '-s',
@@ -120,7 +120,7 @@ def main():
                 else:
                     print(show)
 
-            if i + 1 == limit:
+            if i == limit:
                 break
 
 
