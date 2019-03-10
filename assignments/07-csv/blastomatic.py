@@ -101,20 +101,27 @@ def main():
                 print('Cannot find seq "{}" in lookup'.format(record[1][1]), file=sys.stderr)
 
 
+    for i, rec in enumerate(out_list):
+        #print(rec[3])
+        if rec[2] == '':
+            #print('blank')
+            out_list[i][2] = 'NA'
+        if rec[3] == '':
+            #print('blank')
+            out_list[i][3] = 'NA'
 
-    # for a, b, c, d in out_list:
-    #     print(a,b,c,d)
+    # for i, rec in enumerate(out_list):
+    #     print(rec[3])
+
+
+    for a, b, c, d in out_list:
+        print(a,b,c,d)
 
     if out_file != '':
         #print('we have an out')
         with open(str(out_file), 'w') as outf:
             writer = csv.writer(outf, delimiter='\t')
             writer.writerows(out_list)
-
-            #
-            # for record in SeqIO.parse("/home/fil/Desktop/420_2_03_074.fastq", "fastq"):
-            #     writer.writerow([record.id, record.seq, record.format("qual")])
-
 
     else:
         # for a, b, c, d in out_list:
