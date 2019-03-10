@@ -5,22 +5,70 @@ Date   : 2019-03-09
 Purpose: Rock the Casbah
 """
 
-import os
+import argparse
 import sys
 
 
 # --------------------------------------------------
-def main():
-    args = sys.argv[1:]
+def get_args():
+    """get command-line arguments"""
+    parser = argparse.ArgumentParser(
+        description='Argparse Python script',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    if len(args) != 1:
-        print('Usage: {} ARG'.format(os.path.basename(sys.argv[0])))
-        sys.exit(1)
+    parser.add_argument(
+        'positional', metavar='str', help='A positional argument')
 
-    arg = args[0]
+    parser.add_argument(
+        '-a',
+        '--arg',
+        help='A named string argument',
+        metavar='str',
+        type=str,
+        default='')
 
-    print('Arg is "{}"'.format(arg))
+    parser.add_argument(
+        '-i',
+        '--int',
+        help='A named integer argument',
+        metavar='int',
+        type=int,
+        default=0)
+
+    parser.add_argument(
+        '-f', '--flag', help='A boolean flag', action='store_true')
+
+    return parser.parse_args()
 
 
 # --------------------------------------------------
-main()
+def warn(msg):
+    """Print a message to STDERR"""
+    print(msg, file=sys.stderr)
+
+
+# --------------------------------------------------
+def die(msg='Something bad happened'):
+    """warn() and exit with error"""
+    warn(msg)
+    sys.exit(1)
+
+
+# --------------------------------------------------
+def main():
+    """Make a jazz noise here"""
+    args = get_args()
+    str_arg = args.arg
+    int_arg = args.int
+    flag_arg = args.flag
+    pos_arg = args.positional
+
+    print('str_arg = "{}"'.format(str_arg))
+    print('int_arg = "{}"'.format(int_arg))
+    print('flag_arg = "{}"'.format(flag_arg))
+    print('positional = "{}"'.format(pos_arg))
+
+
+# --------------------------------------------------
+if __name__ == '__main__':
+    main()
