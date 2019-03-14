@@ -10,6 +10,8 @@ import sys
 import os
 import csv
 import collections
+import pandas as pd
+
 
 # --------------------------------------------------
 def get_args():
@@ -70,65 +72,51 @@ def main():
         sys.exit(1)
 
 
-
     #read and open the annotations file
-    centroid_list = []
+    centroid_dict = {}
     with open(anno_file) as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
-            centroid = [row['centroid'], row['genus'], row['species'] ]
-            centroid_list.append(centroid)
-            #print(centroid)
+            #centroid_dict.update({row['centroid']: {'genus': row['genus'], 'species': row['species']}})
+            centroid_dict[row['centroid']] = row
 
-    #print(centroid_list)
 
-    #read and open the inputfile:
-    out_list = [['seq_id', 'pident', 'genus', 'species']]
+    out_list = ['seq_id', 'pident', 'genus', 'species']
+
+    #setup where we'll print the file handel standardout or to the input_arg out_file
+    if out_file != '':
+        f = open(out_file, 'a')
+    else:
+        f = sys.stdout
+
+    print('\t'.join(out_list), file=f)
+
+    #open the inputfile, find the corresponding annotation records and print the relevant data
     with open(in_file) as csvfile:
-        reader = csv.DictReader(csvfile, delimiter='\t')
+        reader = csv.DictReader(csvfile, delimiter='\t', fieldnames=('qaccver', 'saccver', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart', 'send' 'evalue' 'bitscore'))
         for row in reader:
-            record = list(row.items())
-            #print(record[1][1])
-            for i, cl in enumerate(centroid_list):
+            id = row['saccver']
+            pident = row['pident']
+            if id in centroid_dict:
+                if centroid_dict[id]['genus'] == '':
+                    genus = 'NA'
+                else:
+                    genus = centroid_dict[id]['genus']
 
-                if record[1][1] == centroid_list[i][0]:
-                    #print('its in')
-                    #pass
-                    joint_rec = [record[1][1], record[2][1], centroid_list[i][1], centroid_list[i][2]]
-                    out_list.append(joint_rec)
+                if centroid_dict[id]['species'] == '':
+                    species = 'NA'
+                else:
+                    species = centroid_dict[id]['species']
+
+                out_line = [id, pident, genus, species]
+
+
+                #out_line = [row['saccver'], row['pident'],centroid_dict[id]['genus'], centroid_dict[id]['species']]
+
+                print('\t'.join(out_line), file=f)
 
             else:
-                print('Cannot find seq "{}" in lookup'.format(record[1][1]), file=sys.stderr)
-
-
-    for i, rec in enumerate(out_list):
-        #print(rec[3])
-        if rec[2] == '':
-            #print('blank')
-            out_list[i][2] = 'NA'
-        if rec[3] == '':
-            #print('blank')
-            out_list[i][3] = 'NA'
-
-    # for i, rec in enumerate(out_list):
-    #     print(rec[3])
-
-
-    for a, b, c, d in out_list:
-        print(a,b,c,d)
-
-    if out_file != '':
-        #print('we have an out')
-        with open(str(out_file), 'w') as outf:
-            writer = csv.writer(outf, delimiter='\t')
-            writer.writerows(out_list)
-
-    else:
-        # for a, b, c, d in out_list:
-        #     print(a,b,c,d)
-        #for x in out_list:
-        for a, b, c, d in out_list:
-            print('{}   {}  {}  {}'.format(a, b, c, d))
+                print('Cannot find seq "{}" in lookup'.format(id), file=sys.stderr)
 
 # --------------------------------------------------
 if __name__ == '__main__':
