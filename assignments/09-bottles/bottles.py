@@ -13,30 +13,17 @@ import sys
 def get_args():
     """get command-line arguments"""
     parser = argparse.ArgumentParser(
-        description='Argparse Python script',
+        description='Bottles of beer song',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument(
-        'positional', metavar='str', help='A positional argument')
 
     parser.add_argument(
-        '-a',
-        '--arg',
-        help='A named string argument',
-        metavar='str',
-        type=str,
-        default='')
-
-    parser.add_argument(
-        '-i',
-        '--int',
-        help='A named integer argument',
-        metavar='int',
+        '-n',
+        '--num_bottles',
+        help='How many bottles',
+        metavar='INT',
         type=int,
-        default=0)
-
-    parser.add_argument(
-        '-f', '--flag', help='A boolean flag', action='store_true')
+        default=10)
 
     return parser.parse_args()
 
@@ -58,15 +45,46 @@ def die(msg='Something bad happened'):
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    flag_arg = args.flag
-    pos_arg = args.positional
+    #str_arg = args.arg
+    int_arg = args.num_bottles
+    #print('int_arg = "{}"'.format(int_arg))
 
-    print('str_arg = "{}"'.format(str_arg))
-    print('int_arg = "{}"'.format(int_arg))
-    print('flag_arg = "{}"'.format(flag_arg))
-    print('positional = "{}"'.format(pos_arg))
+    while int_arg >= 1:
+        #print(int_arg)
+
+        if int_arg < args.num_bottles:
+            print('')
+
+        if int_arg ==1:
+            b_string = 'bottle'
+        else:
+            b_string = 'bottles'
+
+        print('{} {} of beer on the wall,'.format(int_arg, b_string))
+        print('{} {} of beer,'.format(int_arg, b_string))
+        print('Take one down, pass it around,')
+
+        #int_2 = int_arg -1
+
+        #print('{} {} of beer on the wall,'.format(int_arg, b_string))
+
+        int_arg -= 1
+
+        if int_arg ==1:
+            b_string = 'bottle'
+        else:
+            b_string = 'bottles'
+
+        print('{} {} of beer on the wall!'.format(int_arg, b_string))
+
+
+    """
+    10 bottles of beer on the wall,
+    10 bottles of beer,
+    Take one down, pass it around,
+    9 bottles of beer on the wall!
+    """
+
 
 
 # --------------------------------------------------
