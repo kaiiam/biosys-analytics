@@ -41,7 +41,8 @@ def die(msg='Something bad happened'):
     sys.exit(1)
 
 def tuple_to_str(tup):
-    out = ''.join(reversed(tup))
+    #out = ''.join(reversed(tup))
+    out = ''.join(tup)
     return(out)
 
 
@@ -52,6 +53,7 @@ def main():
     seed_arg = args.seed
 
     random.seed(seed_arg)
+    #random.Random(seed_arg)
 
     #suites = list('♠♣♦♥')
     suites = list('♥♠♣♦')
@@ -65,9 +67,10 @@ def main():
 
     #numbs_cards = ['2','3','4','5','6','7','8','9','10','J','Q', 'K', 'A']
 
-    deck = list(product(numbs_cards, suites))
-    #deck = list(product(suites, numbs_cards))
+    #deck = list(product(numbs_cards, suites))
+    deck = list(product(suites, numbs_cards))
 
+    deck.sort()
 
     #print(deck)
 
@@ -92,8 +95,10 @@ def main():
         player_1 = deck.pop()
         player_2 = deck.pop()
 
-        p1 = values[player_1[0]]
-        p2 = values[player_2[0]]
+        # p1 = values[player_1[0]]
+        # p2 = values[player_2[0]]
+        p1 = values[player_1[1]]
+        p2 = values[player_2[1]]
 
         if p1 > p2:
             outcome = 'P1'
@@ -104,7 +109,30 @@ def main():
         if p1 == p2:
             outcome = 'WAR!'
 
-        print('{}  {} {}'.format(tuple_to_str(player_1), tuple_to_str(player_2), outcome))
+        #print('{} {} {}'.format(tuple_to_str(player_1), tuple_to_str(player_2), outcome))
+
+        if len(''.join(player_1)) > 2:
+            p1_out = ''.join(player_1)
+        else:
+            p1_out = ' ' + ''.join(player_1)
+
+        if len(''.join(player_2)) > 2:
+            p2_out = ''.join(player_2)
+        else:
+            p2_out = ' ' + ''.join(player_2)
+
+        print('{} {} {}'.format(p1_out,p2_out,outcome))
+
+        #print(p2_out)
+
+        # if len(''.join(player_2)) > 2:
+        #     print('{} {} {}'.format(''.join(player_1), ''.join(player_2), outcome))
+        #
+        #     if len(''.join(player_1)) > 2:
+        #         print('{} {} {}'.format(''.join(player_1), ''.join(player_2), outcome))
+        #
+        # else:
+        #     print('{}  {} {}'.format(''.join(player_1), ''.join(player_2), outcome))
 
     if p1_count > p2_count:
         winner = 'Player 1 wins'
