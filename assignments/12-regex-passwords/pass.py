@@ -35,12 +35,17 @@ def main():
 
     compile_str4 = '.' + pass_arg + '.'
 
+    compile_str5 = '.' + pass_arg
+
+    #print(compile_str4)
+
     re1 = re.compile(compile_str1)
     re2 = re.compile(compile_str2)
     re3 = re.compile(compile_str3)
     re4 = re.compile(compile_str4)
+    re5 = re.compile(compile_str5)
 
-    match = re1.match(alt_arg) or re2.match(alt_arg) or re3.match(alt_arg) or re4.match(alt_arg)
+    match = re1.match(alt_arg) or re2.match(alt_arg) or re3.match(alt_arg) or re4.match(alt_arg) or re5.match(alt_arg)
 
     if match:
         print('ok')
