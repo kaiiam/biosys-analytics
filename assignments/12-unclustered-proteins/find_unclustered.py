@@ -7,6 +7,8 @@ Purpose: Rock the Casbah
 
 import argparse
 import sys
+import Bio
+import os
 
 
 # --------------------------------------------------
@@ -23,7 +25,8 @@ def get_args():
         help='Output file from CD-HIT (clustered proteins)',
         metavar='str',
         type=str,
-        default=None)
+        required=True,
+        default='')
 
     parser.add_argument(
         '-p',
@@ -31,7 +34,8 @@ def get_args():
         help='Proteins FASTA',
         metavar='str',
         type=str,
-        default=None)
+        required=True,
+        default='')
 
     parser.add_argument(
         '-o',
@@ -66,6 +70,18 @@ def main():
     protein_file = args.proteins
     outfile = args.outfile
 
+    #print('boo')
+
+    # if cdhit_file == '' or protein_file == '':
+    #     die('usage: find_unclustered.py [-h] -c str -p str [-o str]\nfind_unclustered.py: error: the following arguments are required: -c/--cdhit, -p/--proteins')
+
+    if not os.path.isfile(protein_file):
+        print('--proteins "{}" is not a file'.format(protein_file), file=sys.stderr)
+        sys.exit(1)
+
+    if not os.path.isfile(cdhit_file):
+        print('--cdhit "{}" is not a file'.format(cdhit_file), file=sys.stderr)
+        sys.exit(1)
 
 
 
