@@ -119,24 +119,25 @@ def main():
 
     out_fh = open(outfile, 'wt')
 
-    num_skipped = 0
-    num_taken = 0
+    num_unclustered = 0
+    num_clustered = 0
+    num_total = 0
 
     with open(protein_file, "r") as handle:
         for record in SeqIO.parse(handle, "fasta"):
             #print(record.id)
-
+            num_total += 1
             record.id = re.sub('\|.*', '', record.id)
             #print(record.id)
 
             if record.id in clust_prots:
                 #print(record.id)
-                num_taken += 1
-                SeqIO.write(record, out_fh, 'fasta')
+                num_clustered += 1
             else:
-                num_skipped += 1
+                num_unclustered += 1
+                SeqIO.write(record, out_fh, 'fasta')
 
-    print('Wrote {} of {} unclustered proteins to "{}"'.format(num_taken,num_skipped,outfile))
+    print('Wrote {:,} of {:,} unclustered proteins to "{}"'.format(num_unclustered,num_total,outfile))
 
 # --------------------------------------------------
 if __name__ == '__main__':
