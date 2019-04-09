@@ -9,7 +9,8 @@ import argparse
 import sys
 import Bio
 import os
-
+import re
+from Bio import SeqIO
 
 # --------------------------------------------------
 def get_args():
@@ -84,6 +85,58 @@ def main():
         sys.exit(1)
 
 
+    id_re = re.compile('>gi'
+                        '[|]'
+                        '(?P<id_string>\d+)'   # capture year (group 1)
+                        '[|]')
+
+    clust_prots = []
+
+    lines = 0
+
+    with open(cdhit_file, 'r') as f:
+        for line in f:
+            # Do something with 'line'
+            #print(line)
+            #print(re.search('>gi|.*|', line))
+
+            #lines += 1
+
+            match = id_re.search(line)
+            if match:
+                clust_prots.append(match.group('id_string'))
+            # else:
+            #     print(line)
+            # t = re.search(">gi|(\d{9})",line)
+            # print(t)
+
+    #print('lines: {}'.format(lines))
+
+    #print(len(clust_prots))
+    clust_prots = set(clust_prots)
+
+    #print(len(clust_prots))
+
+    out_fh = open(outfile, 'wt')
+
+    num_skipped = 0
+    num_taken = 0
+
+    with open(protein_file, "r") as handle:
+        for record in SeqIO.parse(handle, "fasta"):
+            #print(record.id)
+
+            record.id = re.sub('\|.*', '', record.id)
+            #print(record.id)
+
+            if record.id in clust_prots:
+                #print(record.id)
+                num_taken += 1
+                SeqIO.write(record, out_fh, 'fasta')
+            else:
+                num_skipped += 1
+
+    print('Wrote {} of {} unclustered proteins to "{}"'.format(num_taken,num_skipped,outfile))
 
 # --------------------------------------------------
 if __name__ == '__main__':
