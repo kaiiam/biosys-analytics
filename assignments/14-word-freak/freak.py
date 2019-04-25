@@ -61,42 +61,31 @@ def main():
     pos_arg = args.positional
 
 
+    word_counts = defaultdict(int)
+
+    # read in the contents of each file and append the words to the word_counts defaultdict
     for file in pos_arg:
-        #print(file)
         ## open file as TextIOwrapper and parse into list of words
         words = file.read().split()
 
         #use regex to remove characters which aren't numbers and letters and make lowercase
         words = [re.sub('[^a-zA-Z0-9]', '', x).lower() for x in words]
-
-        #print(words)
-
-        words.remove('')
-
-        word_counts = defaultdict(int)
-
+        #words.remove('')
         for w in words:
             word_counts[w] +=1
-        #print(word_counts)
 
 
-        # #set a min number of words
-        # for item in word_counts.items():
-        #     if item[1] <= min_arg:
-        #         #print(item[0], item[1])
-        #         word_counts.pop(item[0], item[1])
 
-
-        if sort_arg == 'word':
-            pairs = sorted([(word, count) for word, count in word_counts.items()])
-            for word, count in pairs:
-                if count >= min_arg:
-                    print('{:20} {}'.format(word, count))
-        elif sort_arg == 'frequency':
-            pairs = sorted([(count, word) for word, count in word_counts.items()])
-            for count, word in pairs:
-                if count >= min_arg:
-                    print('{:20} {}'.format(word, count))
+    if sort_arg == 'word':
+        pairs = sorted([(word, count) for word, count in word_counts.items()])
+        for word, count in pairs:
+            if count >= min_arg and word is not '':
+                print('{:20} {}'.format(word, count))
+    elif sort_arg == 'frequency':
+        pairs = sorted([(count, word) for word, count in word_counts.items()])
+        for count, word in pairs:
+            if count >= min_arg and word is not '':
+                print('{:20} {}'.format(word, count))
 
 
 # --------------------------------------------------
