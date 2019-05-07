@@ -54,7 +54,7 @@ def main():
     for file in pos_arg:
         if not os.path.isfile(file):
             print('"{}" is not a file'.format(file), file=sys.stderr)
-            sys.exit(0)
+            continue
 
 
         with open(file, 'r') as f:
